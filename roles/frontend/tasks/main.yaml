@@ -1,0 +1,42 @@
+- name: disable nginx
+  ansible.builtin.command: dnf module disable nginx -y
+
+- name: enable nginx module 1.24
+  ansible.builtin.command: dnf module enable nginx:1.24 -y
+
+- name: install nginx
+  ansible.builtin.dnf:
+    name: nginx
+    state: present
+
+- name: remove html directory
+  ansible.builtin.file:
+    state: absent
+    path: /usr/share/nginx/html/
+
+- name: create html directory
+  ansible.builtin.file:
+    state: directory
+    path: /usr/share/nginx/html/
+
+- name: download {{service_name}} files
+  ansible.builtin.get_url:
+    url: https://roboshop-artifacts.s3.amazonaws.com/{{service_name}}-v3.zip
+    dest: /tmp/{{service_name}}.zip
+
+- name: extract {{service_name}} files
+  ansible.builtin.unarchive:
+    src: /tmp/{{service_name}}.zip
+    dest: /usr/share/nginx/html/
+    remote_src: yes
+
+- name: delete defalt nginx configure
+  ansible.builtin.file:
+    state: absent
+    path: /etc/nginx/nginx.conf
+
+- name: copy nginx conf 
+  ansible.builtin.template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+  notify: restart nginx

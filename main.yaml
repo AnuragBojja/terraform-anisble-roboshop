@@ -1,0 +1,6 @@
+- name: "setup {{ service_name }} server"
+  hosts: "{{ service_name }}"
+  connection: local
+  become: yes
+  roles:
+  - "{{ service_name }}"
