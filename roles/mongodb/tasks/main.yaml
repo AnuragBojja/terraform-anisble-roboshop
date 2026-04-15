@@ -2,7 +2,15 @@
   ansible.builtin.copy:
     src: mongo.repo
     dest: /etc/yum.repos.d/mongo.repo
-  
+
+- name: install python  
+  ansible.builtin.dnf:
+    name: "{{item}}"
+    state: present
+  loop:
+  - botocore
+  - boto3
+
 - name: install mongodb
   ansible.builtin.dnf:
     name: mongodb-org
