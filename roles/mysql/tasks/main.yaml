@@ -13,8 +13,8 @@
   ansible.builtin.command: mysql_secure_installation --set-root-pass {{ mysql_root_pass }}
   
 
-- name: look password
-  ansible.builtin.debug:
-   msg: "{{ mysql_root_pass }}"
-  tags:
-   mysqlpass
+# - name: look password
+#   ansible.builtin.debug:
+#    msg: "{{ mysql_root_pass }}"
+#   tags:
+#    mysqlpass
