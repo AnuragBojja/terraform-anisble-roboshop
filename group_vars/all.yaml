@@ -2,8 +2,8 @@ MONGODB_HOST: mongodb-{{env}}.anuragaws.shop
 RABBITMQ_HOST: rabbitmq-{{env}}.anuragaws.shop
 REDIS_HOST: redis-{{env}}.anuragaws.shop
 MYSQL_HOST: mysql-{{env}}.anuragaws.shop
-CATALOGUE_HOST: catalogue-{{env}}.anuragaws.shop
-USER_HOST: user-{{env}}.anuragaws.shop
-CART_HOST: cart-{{env}}.anuragaws.shop
-PAYMENT_HOST: payment-{{env}}.anuragaws.shop
-SHIPPING_HOST: shipping-{{env}}.anuragaws.shop
+CATALOGUE_HOST: catalogue.backend-alb-{{env}}.anuragaws.shop
+USER_HOST: user.backend-alb-{{env}}.anuragaws.shop
+CART_HOST: cart.backend-alb-{{env}}.anuragaws.shop
+PAYMENT_HOST: payment.backend-alb-{{env}}.anuragaws.shop
+SHIPPING_HOST: shipping.backend-alb-{{env}}.anuragaws.shop
