@@ -7,7 +7,9 @@
   ansible.builtin.import_role:
     name: common
     tasks_from: python.yaml
-
+- name: Install bottle python package
+  ansible.builtin.pip:
+    name: uwsgi
 - name: systemd system 
   ansible.builtin.import_role:
     name: common
